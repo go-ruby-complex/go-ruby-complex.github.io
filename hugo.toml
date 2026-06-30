@@ -1,0 +1,31 @@
+baseURL = "https://go-ruby-complex.github.io/"
+title = "go-ruby-complex"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[[params.phases]]
+  name = "Numeric tower (Num)"
+  status = "ready"
+  blurb = "Each part is a `Num` — a small union of Integer (`*big.Int`), Rational (`*big.Rat`) and Float (`float64`) — preserving exactness exactly as MRI does. `IsInt` / `IsRat` / `IsFloat` / `Float64` inspect it."
+[[params.phases]]
+  name = "Exact-preserving arithmetic"
+  status = "ready"
+  blurb = "`Add` / `Sub` / `Mul` / `Div` / `Pow` keep Integer and Rational parts exact: Integer×Integer stays Integer, anything Rational stays Rational, division canonicalises — `Complex(2,3)**5 == (122-597i)` exactly."
+[[params.phases]]
+  name = "Magnitude & phase"
+  status = "ready"
+  blurb = "`Abs` (via `math.Hypot`), the exact `Abs2`, `Arg` / `Angle` / `Phase` (via `math.Atan2`), `Conjugate`, `Rectangular` and `PolarParts`."
+[[params.phases]]
+  name = "Constructors & parsing"
+  status = "ready"
+  blurb = "`New` / `Rect`, `Polar`, and `Parse` for MRI's `Complex(string)` grammar — `\"1+2i\"`, `\"-i\"`, `\"1/2+3/4i\"`, `\"2.5-1.5i\"`, `\"1@2\"` polar, `j` imaginary unit, `_` digit separators."
+[[params.phases]]
+  name = "MRI-exact rendering"
+  status = "ready"
+  blurb = "`Inspect` (`(1+2i)`, `((1/2)+(3/4)*i)`, `(Infinity+1i)`) and `ToS` (`1+2i`, `1/2+3/4i`), reproducing Ruby's `Float#to_s` formatting and the sign / `*i` rules."
+[[params.phases]]
+  name = "Differential oracle & coverage"
+  status = "ready"
+  blurb = "A wide corpus of constructors, arithmetic, conversions and string parses built here and compared byte-for-byte against the system `ruby`'s `inspect` / `to_s`; 100% coverage, gofmt + go vet clean, green across all six 64-bit Go arches and three OSes."
